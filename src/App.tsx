@@ -1,26 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
 
+import GlobalStyle from './styles/global';
+import Routes from './routes';
+
+const App: React.FC = () =>
+  <>
+    <BrowserRouter>
+      <Routes />
+    </BrowserRouter>
+    <GlobalStyle />
+  </>
 export default App;
+
+
+//estilização da aplicação de uma forma não global
+//cehga um momento q vai ser alterado ai tem 4 coisas mudando o mesmo css
+// taca um !important no final apra colocar a regra sobre as outras
+// StyledComponents isola o css em components
