@@ -43,6 +43,7 @@ export const Form = styled.form<FormProps>`
     border: 2px solid #FFF;
     border-right: 0;
 
+    /* Template string usando a props criada na interface para tratar no jsx e representar outro css */
     ${(props) => props.hasError && css `
       border-color: #c53030;
     `}
