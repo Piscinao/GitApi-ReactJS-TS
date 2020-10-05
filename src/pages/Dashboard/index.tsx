@@ -1,4 +1,4 @@
-import React, { useState, FormEvent } from 'react';
+import React, { useState, useEffect, FormEvent } from 'react';
 import { FiChevronRight } from 'react-icons/fi';
 import api from '../../services/api';
 
@@ -25,7 +25,29 @@ const Dashboard: React.FC = () => {
   // começa um valor de array vazio
   // valor do estado, toda vez que quiser mudar o validator, e estado vazio
   // sempre que é criado um estado sem valor padrão é preciso tipar no TS
-  const [repositories, setRepositories] = useState<Repository[]>([]);
+  const [repositories, setRepositories] = useState<Repository[]>(() => {
+    const storagedRepositories = localStorage.getItem(
+      '@GithubExplorer:repositories',
+    );
+
+
+    // Converte novamente para transformar em um []
+    if (storagedRepositories) {
+      return JSON.parse(storagedRepositories);
+    }
+
+    return [];
+  });
+
+
+
+  // Dispara uma função como primeiro parametro sempre que uma variavel mudar que é enviado como segundo parametro(array)
+  // sempre que que tiver uma mudança na variavel repositories irá salvar no localStorage
+  useEffect(() => {
+    localStorage.setItem('@GithubExplorer:repositories',
+      JSON.stringify(repositories),
+    );
+  }, [repositories]);
 
   // adição de um novo repositório
   // consumir a api do git
