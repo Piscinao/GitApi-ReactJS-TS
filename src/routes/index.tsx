@@ -9,7 +9,7 @@ const Routes: React.FC = () => (
   /* Switch é usado, pois op fragment ele acaba utilizando todas as rotas */
   <Switch>
     <Route path="/" exact component={Dashboard} />
-    <Route path="/Repository" component={Repository} />
+    <Route path="/repositories/:repository+" component={Repository} />
   </Switch>
 );
 
