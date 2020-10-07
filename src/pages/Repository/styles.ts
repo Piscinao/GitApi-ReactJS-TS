@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { shade } from 'polished';
+import styled from 'styled-components';
+
 
 interface FormProps {
   hasError: boolean;
@@ -85,11 +85,7 @@ export const RepositoryInfo = styled.section`
       }
     }
   }
-
-
-
 `;
-
 
 export const Issues = styled.div`
   margin-top: 80px;
